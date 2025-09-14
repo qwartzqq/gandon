@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Full-screen image • 10k page height</title>
+    <link rel="preload" as="image" href="https://kept.com.ua/e1ty/banner.png" />
+    <style>
+      :root{
+        --page-height: 10000px; /* общая высота страницы */
+        --img-url: url('https://kept.com.ua/e1ty/banner.png');
+      }
+      html, body{
+        height:100%;
+        margin:0;
+        padding:0;
+        background: #000; /* на случай, если картинка не загрузится */
+      }
+      /* Картинка на весь экран */
+      body{
+        background-image: var(--img-url);
+        background-size: cover;         /* заполняет весь экран, сохраняя пропорции */
+        background-position: center;    /* центрируем */
+        background-repeat: no-repeat;   /* не повторяем */
+        background-attachment: fixed;   /* остаётся на месте при скролле */
+        min-height: var(--page-height); /* высота страницы 10 000px */
+      }
+      /* Опционально: небольшой индикатор прокрутки, чтобы увидеть высоту 10k */
+      .hint{
+        position: fixed;
+        right: 12px;
+        bottom: 12px;
+        padding: 6px 10px;
+        font: 14px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+        color:#fff; background:rgba(0,0,0,.35);
+        border-radius:10px; backdrop-filter: blur(6px);
+        user-select:none; pointer-events:none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hint">Страница: 10 000px высоты • Картинка — full screen</div>
+  </body>
+</html>
